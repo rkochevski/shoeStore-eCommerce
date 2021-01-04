@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head" />
+<body>
+    <div id="container">
+        
+        <!-- Header -->
+        <div th:replace="fragments/adminLayout :: admin-header" />
+
+        <!-- Main Content -->
+        <div id="body">
+            <div class="container page-content">
+    <table id="table-product" class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Sizes</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-th-each="product : ${products}">
+        <td th:text="${product.title}"></td>
+        <td><div style="display:flex;"><span th:each="item : ${product.category}" 
+            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td><div style="display:flex;"><span th:each="item : ${product.brand}" 
+            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td><div style="display:flex;"><span th:each="item : ${product.sizes}" 
+            th:text="${item.getValue()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.stock}"></td>
+        <td><a th:href="@{/product/edit?id=}+${product.id}" class="badge badge-primary">EDIT</a>  
+            <a th:href="@{/product/delete?id=}+${product.id}" class="badge badge-danger">DELETE </a> </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+        </div> <!-- Main Content End -->
+
+        <!-- Footer -->
+        <div th:replace="fragments/layout :: footer" />
+        
+    </div> <!-- Body Container End -->
+    
+    <!-- Scripts -->
+    <div th:replace="fragments/layout :: scripts" />
+    <script src="/js/data-table.js"></script>
+    
+</body>
+</html>

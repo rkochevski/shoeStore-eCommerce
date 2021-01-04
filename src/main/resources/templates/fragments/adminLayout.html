@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head" />
+<body>
+    <div id="container">
+		
+		<!-- Header -->
+        <div th:fragment="admin-header" id="admin-header">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light" id="header-nav">
+                    <div class="container">
+                        <div class="brand-info-col" id="brand-wrapper">
+                            <div class="row">
+                                <div class="navbar-brand">
+                                    <a sec:authorize="hasRole('ADMIN')" th:href="@{/product/product-list}">
+                                        <h1>ADMIN Portal</h1>    
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav navbar-right ml-auto" id="nav-list">
+                            	<li class="nav-item">
+                                    <a class="nav-link" th:href="@{/product/add}">Add New</a>
+                                </li>
+                                <li class="nav-item">
+									<a class="nav-link" th:href="@{/product/product-list}">Product List</a>
+								</li>
+								<li class="nav-item">
+                                    <a class="nav-link" th:href="@{/}">Back to Store</a>
+                                </li>
+                                <li class="nav-item">
+									<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">Sign Out</a>
+								</li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div> <!-- Header End -->
+        
+        <!-- Footer -->
+        <div th:replace="fragments/layout :: footer" />
+
+	</div>
+
+	<!-- Scripts -->
+    <div th:replace="fragments/layout :: scripts" />
+
+</body>
+</html>

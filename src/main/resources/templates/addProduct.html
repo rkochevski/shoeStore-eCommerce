@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head" />
+<body>
+    <div id="container">
+        
+        <!-- Header -->
+        <div th:replace="fragments/adminLayout :: admin-header" />
+
+        <!-- Main Content -->
+        <div id="body">
+            <div class="container page-content">
+    <form th:action="@{/product/create-product}" th:object="${product}" method="POST" enctype="multipart/form-data">
+      <fieldset>
+        <legend class="center-block">
+          New Product Information
+        </legend>
+              
+        <div class="form-group row">
+          <label for="title" class="col-2 col-form-label text-right">Title</label>
+          <div class="col-6">
+            <input type="text" th:field="*{title}" class="form-control" id="title" name="title">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="category" class="col-2 col-form-label text-right">Category</label>
+          <div class="col-6">
+          	<select th:field="*{category}" id="categories" name="category" data-role="tagsinput">
+				<option th:value="' '"></option>
+				<option th:each = "category : ${allCategories}" th:value="${category.id}" th:utext="${category.name}"/>
+			</select>
+          </div>         
+        </div>
+        <div class="form-group row">
+          <label for="sizes" class="col-2 col-form-label text-right">Sizes</label>
+          <div class="col-6">
+            <input type="text" class="form-control" id="sizes" name="size" data-role="tagsinput">
+          </div>          
+        </div>
+        <div class="form-group row">
+          <label for="brand" class="col-2 col-form-label text-right">Brand</label>
+          <div class="col-6">
+          	<select th:field="*{brand}" id="brand" name="brand" data-role="tagsinput">
+				<option th:value="' '"></option>
+				<option th:each = "brand : ${allBrands}" th:value="${brand.id}" th:utext="${brand.name}"/>
+			</select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="price" class="col-2 col-form-label text-right">Price</label>
+          <div class="col-6 input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            <input th:value="${product.price}" type="number" th:field="*{price}" name="price" step="0.1" class="form-control" id="price" placeholder="List Price" />
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="stock" class="col-2 col-form-label text-right">Available stock</label>
+          <div class="col-6">
+            <input th:value="${product.stock}" type="number" th:field="*{stock}" name="stock" class="form-control" id="stock" placeholder="Number of in-stock" />
+          </div>
+        </div>       
+        
+        <div class="form-group row">
+          <label for="picture" class="col-2 col-form-label text-right">Product image link</label>
+          <div class="col-6">
+            <input type="text" th:field="*{picture}" class="form-control" id="picture" name="picture">
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="offset-2 col-6">
+          	<button type="submit" class="btn btn-success">Add Product</button>
+              <a class="btn btn-danger" th:href="@{/admin}">Cancel</a>
+          </div>
+        </div>
+    </fieldset>
+  </form>
+  </div>
+        </div> <!-- Main Content End -->
+
+        <!-- Footer -->
+        <div th:replace="fragments/layout :: footer" />
+        
+    </div> <!-- Body Container End -->
+    
+    <!-- Scripts -->
+    <div th:replace="fragments/layout :: scripts" />
+    <script src="/js/tagsinput-custom.js"></script>
+    
+</body>
+</html>

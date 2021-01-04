@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store: Boots, Sneakers, & More</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div id="container">
+        <!-- Header -->
+        <div id="header">
+            <header>
+                <div class="row header-top-bar topbar-location-phone d-none d-sm-flex">
+                    <div class="container">
+                        <div class="header-top-inner">
+                            <div class="topbar-left">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="navbar-location">
+                                            <a href="https://www.google.com/maps/place/District+Bar+%26+Kitchen/@41.9961291,21.430469,19.75z/data=!4m5!3m4!1s0x135415b4874fe36f:0xa3eac416fbbba096!8m2!3d41.9962951!4d21.4305288" target="_blank">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                                    <path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                </svg>
+                                                <span class="d-none d-md-inline-block">GTC, 1000 Skopje Macedonia</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="navbar-phone">
+                                            <a href="tel:0038925102510">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                                </svg>
+                                                <span class="d-none d-md-inline-block">+389 2 510 2510</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="topbar-right">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="navbar-account">
+                                            <a href="account.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                                </svg>
+                                                <span class="d-none d-md-inline-block">Account</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="navbar-cart">
+                                            <a href="shopping_cart.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
+                                                </svg>
+                                                <span class="d-none d-md-inline-block">My Bag</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg navbar-light" id="header-nav">
+                    <div class="container">
+                        <div class="brand-info-col" id="brand-wrapper">
+                            <div class="row">
+                                <div class="navbar-brand">
+                                    <a href="../index.html" th:href="@{/}">
+                                        <h1>SHOE Store</h1>    
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav navbar-right ml-auto" id="nav-list">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="womens.html">WOMENS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="mens.html">MENS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="kids.html">KIDS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="accessories.html">ACCESSORIES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link administration" href="categories.html">ADMINISTRATION</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div> <!-- Header End -->
+
+        <!-- Main Content -->
+        <div id="body">
+            <div id="main-content" class="container">
+                <div class="row admin-categories" style="text-align:center;">
+                    <a href="/admin/products_list.html">
+                        <button type="button" class="btn btn-light">PRODUCTS</button>
+                    </a>
+                </div>
+            </div> 
+        </div> <!-- Main Content End -->
+    
+        <!-- Footer -->
+        <div id="footer" style="height: 122px;">
+            <footer class="card-footer">
+                <div class="container">
+                    <!-- <div class="row">
+                        <section id="hours-section" class="col-sm-4">
+                            <span>Hours:</span><br>
+                            Mon - Fri: 09:00 - 22:00<br>
+                            Sat:       09:00 - 16:00<br>
+                            <hr class="d-block d-sm-none">
+                        </section>
+                        <section id="contact-section" class="col-sm-4">
+                            <span>Contact:</span><br>
+                            GTC, 1000 Skopje Macedonia<br>
+                            +389 79 919 919<br>
+                            info@shoestore.mk<br>
+                            <hr class="d-block d-sm-none">
+                        </section>
+                        <section id="about-section" class="col-sm-4">
+                            <span>About:</span>
+                            <p>With our unique and distinctive concept and promotional marketing, Shoe Store steps ahead of our competitors by bringing the best deals on the hottest brands for the whole family!</p>
+                            <p>We have an incredibly talented, highly motivated, and diverse team in our Retail Stores, Corporate Office, and Distribution Center. We are looking for team members who understand the importance of customer service, have an excellent work ethic, and a passion for career growth opportunities. Put your best foot forward – join our Talent Network and apply today! Learn more about our careers and current opportunities on our Careers page.</p>
+                        </section>
+                    </div> -->
+                    <div class="useful-links">
+                        <a class="link-item" href="https://www.instagram.com/distriktbarkitchen/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="facebook-svg" style="enable-background:new 0 0 112.196 112.196;" version="1.1" viewBox="0 0 112.196 112.196" xml:space="preserve"><g><circle cx="56.098" cy="56.098" r="56.098" style="fill:#3B5998;"/><path d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34   c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z" style="fill:#FFFFFF;"/></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                        </a>
+                        <a class="link-item" href="https://www.instagram.com/distriktbarkitchen/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="twitter-svg" style="enable-background:new 0 0 112.197 112.197;" version="1.1" viewBox="0 0 112.197 112.197" xml:space="preserve"><g><circle cx="56.099" cy="56.098" r="56.098" style="fill:#55ACEE;"/><g><path d="M90.461,40.316c-2.404,1.066-4.99,1.787-7.702,2.109c2.769-1.659,4.894-4.284,5.897-7.417    c-2.591,1.537-5.462,2.652-8.515,3.253c-2.446-2.605-5.931-4.233-9.79-4.233c-7.404,0-13.409,6.005-13.409,13.409    c0,1.051,0.119,2.074,0.349,3.056c-11.144-0.559-21.025-5.897-27.639-14.012c-1.154,1.98-1.816,4.285-1.816,6.742    c0,4.651,2.369,8.757,5.965,11.161c-2.197-0.069-4.266-0.672-6.073-1.679c-0.001,0.057-0.001,0.114-0.001,0.17    c0,6.497,4.624,11.916,10.757,13.147c-1.124,0.308-2.311,0.471-3.532,0.471c-0.866,0-1.705-0.083-2.523-0.239    c1.706,5.326,6.657,9.203,12.526,9.312c-4.59,3.597-10.371,5.74-16.655,5.74c-1.08,0-2.15-0.063-3.197-0.188    c5.931,3.806,12.981,6.025,20.553,6.025c24.664,0,38.152-20.432,38.152-38.153c0-0.581-0.013-1.16-0.039-1.734    C86.391,45.366,88.664,43.005,90.461,40.316L90.461,40.316z" style="fill:#F1F2F2;"/></g></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                        </a>
+                        <a class="link-item" href="https://www.instagram.com/distriktbarkitchen/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="pinterest-svg" version="1.1" x="0px" y="0px" viewBox="0 0 32 32" xml:space="preserve"><g id="Flat_copy_5"><path fill="#E02F2F" d="M15.995 0c-8.837 0-16 7.163-16 16 0 8.836 7.163 16 16 16s16-7.164 16-16c0-8.837-7.164-16-16-16z"/><path fill="#FFF" d="M24.002 12.466c0 4.658-2.59 8.139-6.407 8.139-1.283 0-2.488-.693-2.901-1.481 0 0-.69 2.736-.835 3.264-.514 1.866-2.027 3.733-2.144 3.886-.082.106-.263.073-.282-.068-.033-.238-.418-2.592.036-4.513l1.527-6.471s-.379-.758-.379-1.879c0-1.76 1.02-3.074 2.29-3.074 1.08 0 1.601.81 1.601 1.782 0 1.086-.691 2.71-1.048 4.214-.298 1.26.632 2.288 1.874 2.288 2.25 0 3.765-2.89 3.765-6.314 0-2.602-1.752-4.551-4.941-4.551-3.601 0-5.846 2.686-5.846 5.687 0 1.035.306 1.765.784 2.329.219.26.25.364.17.662-.058.219-.187.744-.243.953-.079.301-.323.408-.594.297-1.659-.677-2.432-2.495-2.432-4.537 0-3.373 2.845-7.418 8.487-7.418 4.535.002 7.518 3.282 7.518 6.805z"/></g></svg>
+                        </a>
+                        <a class="link-item" href="https://www.instagram.com/ristoneeisto/?hl=en" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="instagram-svg" data-name="Layer 1" viewBox="0 0 128 128"><defs><style>.cls-1,.cls-13{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:url(#radial-gradient);}.cls-4{clip-path:url(#clip-path-2);}.cls-5{fill:url(#radial-gradient-2);}.cls-6{clip-path:url(#clip-path-3);}.cls-7{fill:url(#radial-gradient-3);}.cls-8{clip-path:url(#clip-path-4);}.cls-9{clip-path:url(#clip-path-5);}.cls-10{clip-path:url(#clip-path-6);}.cls-11{fill:url(#radial-gradient-6);}.cls-12{fill:#fff;}.cls-13{stroke:#fff;stroke-miterlimit:10;stroke-width:8px;}</style><clipPath id="clip-path"><circle class="cls-1" cx="64" cy="64" r="64" style="fill: none;"/></clipPath><radialGradient id="radial-gradient" cx="27.5" cy="121.5" r="137.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd676"/><stop offset="0.25" stop-color="#f2a454"/><stop offset="0.38" stop-color="#f05c3c"/><stop offset="0.7" stop-color="#c22f86"/><stop offset="0.96" stop-color="#6666ad"/><stop offset="0.99" stop-color="#5c6cb2"/></radialGradient><clipPath id="clip-path-2"><path class="cls-1" d="M104-163H24A24.07,24.07,0,0,0,0-139v80A24.07,24.07,0,0,0,24-35h80a24.07,24.07,0,0,0,24-24v-80A24.07,24.07,0,0,0,104-163ZM120-59a16,16,0,0,1-16,16H24A16,16,0,0,1,8-59v-80a16,16,0,0,1,16-16h80a16,16,0,0,1,16,16Z" style="fill: none;"/></clipPath><radialGradient id="radial-gradient-2" cx="27.5" cy="-41.5" r="148.5" xlink:href="#radial-gradient"/><clipPath id="clip-path-3"><circle class="cls-1" cx="82" cy="209" r="5" style="fill: none;"/></clipPath><radialGradient id="radial-gradient-3" cx="13.87" cy="303.38" r="185.63" xlink:href="#radial-gradient"/><clipPath id="clip-path-4"><path class="cls-1" d="M64-115A16,16,0,0,0,48-99,16,16,0,0,0,64-83,16,16,0,0,0,80-99,16,16,0,0,0,64-115Zm0,24a8,8,0,0,1-8-8,8,8,0,0,1,8-8,8,8,0,0,1,8,8A8,8,0,0,1,64-91Z" style="fill: none;"/></clipPath><clipPath id="clip-path-5"><path class="cls-1" d="M84-63H44A16,16,0,0,1,28-79v-40a16,16,0,0,1,16-16H84a16,16,0,0,1,16,16v40A16,16,0,0,1,84-63ZM44-127a8,8,0,0,0-8,8v40a8,8,0,0,0,8,8H84a8,8,0,0,0,8-8v-40a8,8,0,0,0-8-8Z" style="fill: none;"/></clipPath><clipPath id="clip-path-6"><circle class="cls-1" cx="82" cy="-117" r="5" style="fill: none;"/></clipPath><radialGradient id="radial-gradient-6" cx="13.87" cy="-22.62" r="185.63" xlink:href="#radial-gradient"/></defs><title>Artboard 26</title><g class="cls-2" style="clip-path: url(#clip-path);"><circle class="cls-3" cx="27.5" cy="121.5" r="137.5" style="fill: url(#radial-gradient);"/></g><g class="cls-4" style="clip-path: url(#clip-path-2);"><circle class="cls-5" cx="27.5" cy="-41.5" r="148.5" style="fill: url(#radial-gradient-2);"/></g><g class="cls-6" style="clip-path: url(#clip-path-3);"><circle class="cls-7" cx="13.87" cy="303.38" r="185.63" style="fill: url(#radial-gradient-3);"/></g><g class="cls-8" style="clip-path: url(#clip-path-4);"><circle class="cls-5" cx="27.5" cy="-41.5" r="148.5" style="fill: url(#radial-gradient-2);"/></g><g class="cls-9" style="clip-path: url(#clip-path-5);"><circle class="cls-5" cx="27.5" cy="-41.5" r="148.5" style="fill: url(#radial-gradient-2);"/></g><g class="cls-10" style="clip-path: url(#clip-path-6);"><circle class="cls-11" cx="13.87" cy="-22.62" r="185.63" style="fill: url(#radial-gradient-6);"/></g><circle class="cls-12" cx="82" cy="46" r="5" style="fill: #fff;"/><path class="cls-12" d="M64,48A16,16,0,1,0,80,64,16,16,0,0,0,64,48Zm0,24a8,8,0,1,1,8-8A8,8,0,0,1,64,72Z" style="fill: #fff;"/><rect class="cls-13" x="32" y="32" width="64" height="64" rx="12" ry="12" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 8px;"/></svg>
+                        </a>
+                        <a class="link-item" href="https://github.com/rkochevski" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" id="github-svg" viewBox="0 0 256 249" preserveAspectRatio="xMinYMin meet"><g fill="#161614"><path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/><path d="M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"/></g></svg>
+                        </a>
+                        <a class="link-item" href="https://www.linkedin.com/in/risto-kochevski-a9a761169/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" id="linkedin-svg" fill="none" viewBox="0 0 48 48"><path fill="#0077B5" d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"/><path fill="#fff" fill-rule="evenodd" d="M17.3188 14.8227C17.3188 16.3918 16.1377 17.6473 14.2412 17.6473H14.2064C12.3805 17.6473 11.2 16.3918 11.2 14.8227C11.2 13.2204 12.4164 12 14.277 12C16.1377 12 17.2835 13.2204 17.3188 14.8227ZM16.9605 19.8778V36.2196H11.5216V19.8778H16.9605ZM36.5752 36.2196L36.5754 26.8497C36.5754 21.8303 33.8922 19.4941 30.3131 19.4941C27.4254 19.4941 26.1325 21.0802 25.4107 22.1929V19.8783H19.9711C20.0428 21.4117 19.9711 36.22 19.9711 36.22H25.4107V27.0934C25.4107 26.605 25.446 26.1178 25.5898 25.7681C25.9829 24.7924 26.8779 23.7822 28.3805 23.7822C30.3494 23.7822 31.1365 25.2807 31.1365 27.4767V36.2196H36.5752Z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </div>
+                    <div class="text-center">&copy; 2020 @ristoneeisto</div>
+                </div>
+            </footer>
+        </div> <!-- Footer End -->
+    </div>
+    
+    <script src="js/script.js" th:src="@{/resources/js/script.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

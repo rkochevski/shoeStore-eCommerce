@@ -16,5 +16,15 @@ public class ViewController {
 	public String homePage() {
 		return "index";
 	}
+	
+	@GetMapping("/privacy-policy")
+	public String privacyPolicyPage() {
+		return "privacy-policy";
+	}
+	
+	@GetMapping("/terms")
+	public String termsAndConditionsPage() {
+		return "terms-and-conditions";
+	}
 
 }

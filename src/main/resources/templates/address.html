@@ -2,75 +2,85 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/layout :: head" />
 <body>
-    <div id="container">
-        
-        <!-- Header -->
-        <div th:replace="fragments/layout :: header" />
+	<div id="container">
 
-        <!-- Main Content -->
-        <div id="body">
-            <div class="container page-content user-form">
-			    <div class="row">    
+		<!-- Header -->
+		<div th:replace="fragments/layout :: header" />
+
+		<!-- Main Content -->
+		<div id="body">
+			<div class="container page-content user-form">
+				<div class="row">
 					<div class="col-md-4 col-lg-3">
 						<div class="card">
 							<div class="card-body text-center">
-								<img src="/images/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
+								<img src="/images/user/user.png" width="100" height="100" 	alt="User" class="rounded-circle mb-3">
 								<h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
-								<small class="text-secondary" th:text="'Last seen '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>       
+								<small class="text-secondary" th:text="'Last seen '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>
 							</div>
 							<div class="list-group list-group-flush">
-								<a th:href="@{/profile}" class="list-group-item list-group-item-action"><i data-feather="user" class="mr-3"></i>Profile</a>
-								<a th:href="@{/orders}" class="list-group-item list-group-item-action"><i data-feather="shopping-bag" class="mr-3"></i>Orders</a>
-								<a th:href="@{/address}" class="list-group-item list-group-item-action active"><i data-feather="map" class="mr-3"></i>Address</a>
-								<a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i data-feather="log-out" class="mr-3"></i>Sign Out</a>
+								<a th:href="@{/profile}" class="list-group-item list-group-item-action">
+									<i data-feather="user" class="mr-3"></i>Profile
+								</a>
+								<a th:href="@{/orders}" class="list-group-item list-group-item-action">
+									<i data-feather="shopping-bag" class="mr-3"></i>Orders
+								</a>
+								<a th:href="@{/address}" class="list-group-item list-group-item-action active">
+									<i data-feather="map" class="mr-3"></i>Address
+								</a>
+								<a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger">
+									<i data-feather="log-out" class="mr-3"></i>Sign Out
+								</a>
 							</div>
 						</div>
 					</div>
-			    
-			     <div class="col mt-3 mt-md-0">
-			        <div class="card">
-			          <div class="card-body">
-			            <h3>My Address</h3><hr>
-			            <form th:action="@{/update-address}" method="POST">
-			              <div class="form-row">
-			                <div class="form-group col-12">
-			                  <label for="billingAddress">Address</label>
-			                  <input type="text" class="form-control" th:name="streetAddress" th:value="${user?.address?.streetAddress}">
-			                </div>
-			                <div class="form-group col-6 col-sm-5">
-			                  <label for="billingCountry">Country</label>
-			                  <input type="text" class="form-control" th:name="country" th:value="${user?.address?.country}">
-			                  
-			                </div>
-			                <div class="form-group col-6 col-sm-5">
-			                  <label for="billingCity">City</label>
-			                  <input type="text" class="form-control"   th:name="city" th:value="${user?.address?.city}">
-			                </div>
-			                <div class="form-group col-3 col-sm-2">
-			                  <label for="billingZip">ZIP Code</label>
-			                  <input type="number" class="form-control" th:name="zipCode" th:value="${user?.address?.zipCode}">
-			                </div>
-			              </div>
-			              <div class="form-group">
-			                <button type="submit" class="btn btn-primary">Save Changes</button>
-			              </div>
-			            </form>
-			           
-			          </div>
-			        </div>
-			      </div>
-			      
-			  </div>
-			</div> <!--  End Container -->
-        </div> <!-- Main Content End -->
+					<div class="col mt-3 mt-md-0">
+						<div class="card">
+							<div class="card-body">
+								<h3>My Address</h3>
+								<hr>
+								<form th:action="@{/update-address}" method="POST">
+									<div class="form-row">
+										<div class="form-group col-12">
+											<label for="billingAddress">Address</label>
+											<input type="text" class="form-control" th:name="streetAddress" th:value="${user?.address?.streetAddress}">
+										</div>
+										<div class="form-group col-6 col-sm-5">
+											<label for="billingCountry">Country</label>
+											<input type="text" class="form-control" th:name="country" th:value="${user?.address?.country}">
+										</div>
+										<div class="form-group col-6 col-sm-5">
+											<label for="billingCity">City</label>
+											<input type="text" class="form-control" th:name="city" th:value="${user?.address?.city}">
+										</div>
+										<div class="form-group col-3 col-sm-2">
+											<label for="billingZip">ZIP Code</label>
+											<input type="number" class="form-control" th:name="zipCode" th:value="${user?.address?.zipCode}">
+										</div>
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary">Save Changes</button>
+									</div>
+								</form>
 
-        <!-- Footer -->
-        <div th:replace="fragments/layout :: footer" />
-        
-    </div> <!-- Body Container End -->
-    
-    <!-- Scripts -->
-    <div th:replace="fragments/layout :: scripts" />
-    
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--  End Container -->
+		</div>
+		<!-- Main Content End -->
+
+		<!-- Footer -->
+		<div th:replace="fragments/layout :: footer" />
+
+	</div>
+	<!-- Body Container End -->
+
+	<!-- Scripts -->
+	<div th:replace="fragments/layout :: scripts" />
+
 </body>
 </html>

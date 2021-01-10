@@ -2,50 +2,49 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/layout :: head" />
 <body>
-    <div id="container">
-        
-        <!-- Header -->
-<!--         <div th:replace="fragments/layout :: header" /> -->
+	<div id="container">
 
 		<!-- Main Content -->
-        <div id="body">
-		    <div class="container">
+		<div id="body">
+			<div class="container">
 				<div class="text-center">
 					<h1>Something went wrong!</h1>
 					<a href="/" class="btn btn-primary btn-lg my-3">Go Home</a>
 				</div>
 				<table class="table">
 					<tr>
-					    <td>Error</td>
-					    <td th:text="${error}"/>
+						<td>Error</td>
+						<td th:text="${error}" />
 					</tr>
 					<tr>
-					    <td>Status</td>
-					    <td th:text="${status}"/>
+						<td>Status</td>
+						<td th:text="${status}" />
 					</tr>
 					<tr>
-					    <td>Path</td>
-					    <td th:text="${path}"/>
+						<td>Path</td>
+						<td th:text="${path}" />
 					</tr>
 					<tr>
-					    <td>Date</td>
-					    <td th:text="${timestamp}"/>
+						<td>Date</td>
+						<td th:text="${timestamp}" />
 					</tr>
 					<tr>
-					    <td>Message</td>
-					    <td th:text="${message}"/>
-					</tr>  
+						<td>Message</td>
+						<td th:text="${message}" />
+					</tr>
 				</table>
 			</div>
-        </div> <!-- Main Content End -->
-    
-        <!-- Footer -->
-        <div th:replace="fragments/layout :: footer" />
-        
-    </div> <!-- Body Container End -->
-    
-    <!-- Scripts -->
-    <div th:replace="fragments/layout :: scripts" />
-    
+		</div>
+		<!-- Main Content End -->
+
+		<!-- Footer -->
+		<div th:replace="fragments/layout :: footer" />
+
+	</div>
+	<!-- Body Container End -->
+
+	<!-- Scripts -->
+	<div th:replace="fragments/layout :: scripts" />
+
 </body>
 </html>

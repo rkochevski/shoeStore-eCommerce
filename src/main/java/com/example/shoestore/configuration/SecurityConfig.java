@@ -35,7 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/register",
 			"/create-account",
 			"/store/**",
-			"/product-detail"				
+			"/product-detail",
+			"/privacy-policy",
+			"/terms"
 	};
 	
 	@Override

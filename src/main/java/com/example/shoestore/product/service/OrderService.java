@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.shoestore.product.entity.Product;
+import com.example.shoestore.account.entity.User;
 import com.example.shoestore.product.entity.CartItem;
 import com.example.shoestore.product.entity.Order;
 import com.example.shoestore.product.entity.Payment;
@@ -19,7 +20,6 @@ import com.example.shoestore.product.entity.ShoppingCart;
 import com.example.shoestore.product.repository.ProductRepository;
 import com.example.shoestore.product.repository.CartItemRepository;
 import com.example.shoestore.product.repository.OrderRepository;
-import com.example.shoestore.user.entity.User;
 
 @Service
 public class OrderService {
@@ -36,21 +36,33 @@ public class OrderService {
 	@Transactional
 	@CacheEvict(value = "itemcount", allEntries = true)
 	public synchronized Order createOrder(ShoppingCart shoppingCart, Shipping shipping, Payment payment, User user) {
+		Order order = createNewOrder(shoppingCart, shipping, payment, user);
+		setCartItems(shoppingCart, order);
+		return order;	
+	}
+
+	private Order createNewOrder(ShoppingCart shoppingCart, Shipping shipping, Payment payment, User user) {
 		Order order = new Order();
 		order.setUser(user);
 		order.setPayment(payment);
 		order.setShipping(shipping);
 		order.setOrderTotal(shoppingCart.getGrandTotal());
+		
 		shipping.setOrder(order);
-		payment.setOrder(order);			
+		payment.setOrder(order);
+		
 		LocalDate today = LocalDate.now();
-		LocalDate estimatedDeliveryDate = today.plusDays(5);				
+		LocalDate estimatedDeliveryDate = today.plusDays(5);
+		
 		order.setOrderDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		order.setShippingDate(Date.from(estimatedDeliveryDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		order.setOrderStatus("In Progress");
 		
 		order = orderRepository.save(order);
-		
+		return order;
+	}
+	
+	private void setCartItems(ShoppingCart shoppingCart, Order order) {
 		List<CartItem> cartItems = shoppingCart.getCartItems();
 		for (CartItem item : cartItems) {
 			Product product = item.getProduct();
@@ -58,10 +70,9 @@ public class OrderService {
 			productRepository.save(product);
 			item.setOrder(order);
 			cartItemRepository.save(item);
-		}		
-		return order;	
+		}
 	}
-	
+
 	public Order findOrderWithDetails(Long id) {
 		return orderRepository.findEagerById(id);
 	}	

@@ -10,7 +10,7 @@
         <!-- Main Content -->
         <div id="body">
             <div class="container page-content">
-    <form th:action="@{/product/edit}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/product/edit}" th:object="${product}" method="POST" enctype="multipart/form-data">
       <fieldset>
         <legend class="center-block">
           Edit Product Information
@@ -27,30 +27,25 @@
         <div class="form-group row">
           <label for="category" class="col-2 col-form-label text-right">Category</label>
           <div class="col-6">
-            <input type="text" class="form-control" id="categories" name="category" data-role="tagsinput" th:value="${preselectedCategories}">
-          </div>
-          <div class="col-4">
-            <button type=button class="btn btn-primary btn-category badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allCategories}" 
-            th:text="${item}" th:id="item+${category}"></button>           
-          </div>          
+          	<select th:field="*{category}" id="categories" name="category" data-role="tagsinput">
+				<option th:value="' '"></option>
+				<option th:each = "category : ${allCategories}" th:value="${category.id}" th:utext="${category.name}"/>
+			</select>
+          </div>      
         </div>
         <div class="form-group row">
           <label for="brand" class="col-2 col-form-label text-right">Sizes</label>
           <div class="col-6">
             <input type="text" class="form-control" id="sizes" name="size" data-role="tagsinput" th:value="${preselectedSizes}">
-          </div>
-          <div class="col-4">
-            <button type=button class="btn btn-primary btn-size" th:each="item : ${#lists.sort(allSizes)}" th:text="${item}" th:id="size+${item}"></button>           
           </div>          
         </div>
         <div class="form-group row">
           <label for="brand" class="col-2 col-form-label text-right">Brand</label>
           <div class="col-6">
-            <input type="text" class="form-control" id="brands" name="brand" data-role="tagsinput" th:value="${preselectedBrands}">
-          </div>
-          <div class="col-4">
-            <button type=button class="btn btn-primary btn-brand badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allBrands}" 
-            th:text="${#strings.capitalize(item)}" th:id="brand+${item}"></button>           
+          	<select th:field="*{brand}" id="brand" name="brand" data-role="tagsinput">
+				<option th:value="' '"></option>
+				<option th:each = "brand : ${allBrands}" th:value="${brand.id}" th:utext="${brand.name}"/>
+			</select>
           </div>
         </div>
         
@@ -60,7 +55,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">$</span>
             </div>
-            <input th:value="${product.price}" type="number" name="price" step="0.1"
+            <input th:value="${product.price}" type="number" name="price" step="0.01"
           class="form-control" id="price" placeholder="List Price" />
           </div>
         </div>
@@ -82,10 +77,17 @@
           </div>
         </div>
         
+        <div class="form-group row" style = "display:none">
+          <label for="enabled" class="col-2 col-form-label text-right">Is Enabled</label>
+          <div class="col-6">
+            <input type="boolean" th:value="${product.enabled}" class="form-control" id="enabled" name="enabled">
+          </div>
+        </div>
+        
         <div class="form-group row">
           <div class="offset-2 col-6">
           	<button type="submit" class="btn btn-success">Update Product</button>
-              <a class="btn btn-danger" th:href="@{/admin}">Cancel</a>
+              <a class="btn btn-danger" th:href="@{/product/product-list}">Cancel</a>
           </div>
         </div>
     </fieldset>

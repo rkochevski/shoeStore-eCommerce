@@ -45,7 +45,7 @@
 			          <div class="card">
 			            <div class="card-body">
 			              <h3>My Profile</h3><hr>
-			              <form id="profileForm" th:action="@{/update-profile}" novalidate method="POST">
+			              <form id="profileForm" th:action="@{/update-profile}" th:object="${user}" method="POST" >
 			                <div class="form-row">
 			                  <div class="form-group col-sm-6">
 			                    <label for="firstName">First Name</label>                        

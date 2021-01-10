@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.shoestore.account.entity.User;
 import com.example.shoestore.product.entity.CartItem;
 import com.example.shoestore.product.entity.Product;
 import com.example.shoestore.product.entity.ShoppingCart;
 import com.example.shoestore.product.service.ProductService;
 import com.example.shoestore.product.service.ShoppingCartService;
-import com.example.shoestore.user.entity.User;
 
 @Controller
 @RequestMapping("/shopping-cart")
@@ -38,22 +38,21 @@ public class ShoppingCartController {
 	}
 
 	@PostMapping("/add-item")
-	public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty") String qty,
-						  @RequestParam("size") String size, RedirectAttributes attributes, Model model, Authentication authentication) {
+	public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty") String qty, @RequestParam("size") String size, 
+							RedirectAttributes attributes, Model model, Authentication authentication) {
 		product = productService.findProductById(product.getId());				
 		if (!product.hasStock(Integer.parseInt(qty))) {
 			attributes.addFlashAttribute("notEnoughStock", true);
-			return "redirect:/product-detail?id="+product.getId();
+			return "redirect:/product-detail?id=" + product.getId();
 		}		
 		User user = (User) authentication.getPrincipal();		
 		shoppingCartService.addProductToShoppingCart(product, user, Integer.parseInt(qty), size);
 		attributes.addFlashAttribute("addProductSuccess", true);
-		return "redirect:/product-detail?id="+product.getId();
+		return "redirect:/product-detail?id=" + product.getId();
 	}
 	
 	@PostMapping("/update-item")
-	public String updateItemQuantity(@RequestParam("id") Long cartItemId,
-									 @RequestParam("qty") Integer qty, Model model) {		
+	public String updateItemQuantity(@RequestParam("id") Long cartItemId, @RequestParam("qty") Integer qty, Model model) {		
 		CartItem cartItem = shoppingCartService.findCartItemById(cartItemId);
 		if (cartItem.canUpdateQty(qty)) {
 			shoppingCartService.updateCartItem(cartItem, qty);
@@ -61,7 +60,7 @@ public class ShoppingCartController {
 		return "redirect:/shopping-cart/cart";
 	}
 	
-	@PostMapping("/remove-item")
+	@GetMapping("/remove-item")
 	public String removeItem(@RequestParam("id") Long id) {		
 		shoppingCartService.removeCartItem(shoppingCartService.findCartItemById(id));		
 		return "redirect:/shopping-cart/cart";

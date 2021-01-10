@@ -1,4 +1,4 @@
-package com.example.shoestore.product.entity;
+package com.example.shoestore.account.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,12 +13,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+public class Address {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String name;
+	private String streetAddress;
+	private String city;
+	private String country;
+	private String zipCode;
 
 }

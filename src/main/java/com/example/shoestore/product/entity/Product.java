@@ -1,21 +1,15 @@
 package com.example.shoestore.product.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 public class Product {
@@ -26,11 +20,9 @@ public class Product {
 	
 	private String title;
 	
-	private int stock;
-	
-	private double price;
-	
-	private String picture;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
 	
 	@OneToMany(mappedBy="product", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Size> sizes;
@@ -39,9 +31,13 @@ public class Product {
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 	
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+	private double price;
+	
+	private int stock;
+	
+	private String picture;
+	
+	private boolean enabled;
 	
 	
 	public Product() {
@@ -131,8 +127,13 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	
 
+	public boolean isEnabled() {
+		return enabled;
+	}
 
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 }

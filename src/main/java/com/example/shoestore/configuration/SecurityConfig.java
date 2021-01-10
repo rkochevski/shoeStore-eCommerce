@@ -10,8 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.example.shoestore.account.service.UserSecurityService;
 import com.example.shoestore.security.SecurityUtility;
-import com.example.shoestore.user.service.UserSecurityService;
 
 @Configuration
 @EnableWebSecurity
@@ -33,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/",
 			"/login",
 			"/register",
-			"/create-user",
-			"/store",
+			"/create-account",
+			"/store/**",
 			"/product-detail"				
 	};
 	

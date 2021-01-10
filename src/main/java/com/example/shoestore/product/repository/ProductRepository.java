@@ -14,12 +14,10 @@ import com.example.shoestore.product.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
 	
-//	@EntityGraph(attributePaths = { "sizes", "categories", "brand" })
-//	List<Product> findAllEagerBy();	
-	
+	@Query("SELECT p FROM Product p WHERE p.enabled = true")
 	List<Product> findAll();
 		
-//	@EntityGraph(attributePaths = { "sizes", "categories", "brands" })
+	@EntityGraph(attributePaths = { "sizes", "category", "brand" })
 	Optional<Product> findById(Long id);
 	
 	@Query("SELECT DISTINCT s.value FROM Size s")

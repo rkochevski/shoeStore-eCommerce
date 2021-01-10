@@ -3,15 +3,13 @@ package com.example.shoestore.product.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.example.shoestore.product.entity.Product;
+import com.example.shoestore.account.entity.User;
 import com.example.shoestore.product.entity.CartItem;
 import com.example.shoestore.product.entity.ShoppingCart;
 import com.example.shoestore.product.repository.CartItemRepository;
-import com.example.shoestore.user.entity.User;
 
 @Service
 public class ShoppingCartService {
@@ -23,7 +21,6 @@ public class ShoppingCartService {
 		return new ShoppingCart(cartItemRepository.findAllByUserAndOrderIsNull(user));
 	}
 
-	@Cacheable("itemcount")
 	public int getItemsNumber(User user) {
 		return cartItemRepository.countDistinctByUserAndOrderIsNull(user);
 	}
@@ -33,7 +30,6 @@ public class ShoppingCartService {
 		return optional.get();
 	}
 
-	@CacheEvict(value = "itemcount", allEntries = true)
 	public CartItem addProductToShoppingCart(Product product, User user, int qty, String size) {
 		ShoppingCart shoppingCart = this.getShoppingCart(user);
 		CartItem cartItem = shoppingCart.findCartItemByProductAndSize(product.getId(), size);
@@ -52,12 +48,10 @@ public class ShoppingCartService {
 		return cartItem;	
 	}
 
-	@CacheEvict(value = "itemcount", allEntries = true)
 	public void removeCartItem(CartItem cartItem) {
 		cartItemRepository.deleteById(cartItem.getId());
 	}
 
-	@CacheEvict(value = "itemcount", allEntries = true)
 	public void updateCartItem(CartItem cartItem, Integer qty) {
 		if (qty == null || qty <= 0) {
 			this.removeCartItem(cartItem);
@@ -67,7 +61,6 @@ public class ShoppingCartService {
 		}
 	}
 
-	@CacheEvict(value = "itemcount", allEntries = true)
 	public void clearShoppingCart(User user) {
 		cartItemRepository.deleteAllByUserAndOrderIsNull(user);	
 	}	

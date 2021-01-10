@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.shoestore.account.entity.User;
 import com.example.shoestore.product.service.ShoppingCartService;
-import com.example.shoestore.user.entity.User;
 
 @ControllerAdvice
 public class GlobalControllerAdvice {
@@ -49,16 +49,16 @@ public class GlobalControllerAdvice {
 		} 
 	}
 	
-//	@ExceptionHandler(value = Exception.class)
-//	public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-//		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null)
-//			throw e;		
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("timestamp", new Date(System.currentTimeMillis()));
-//		mav.addObject("path", req.getRequestURL());
-//		mav.addObject("message", e.getMessage());
-//		mav.setViewName(DEFAULT_ERROR_VIEW);
-//		return mav;
-//	}
+	@ExceptionHandler(value = Exception.class)
+	public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null)
+			throw e;		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("timestamp", new Date(System.currentTimeMillis()));
+		mav.addObject("path", req.getRequestURL());
+		mav.addObject("message", e.getMessage());
+		mav.setViewName(DEFAULT_ERROR_VIEW);
+		return mav;
+	}
 
 }

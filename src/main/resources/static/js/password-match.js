@@ -18,7 +18,6 @@ $(document).ready(function(){
 	$("#txtConfirmPassword").keyup(checkPasswordMatch);
 	$("#txtNewPassword").keyup(checkPasswordMatch);
 	$('#updateUserInfoButton').click(function() {
-		console.log("clickeo")
 		if ($('#txtNewPassword').val() == '') {   
 			$('#profileForm').submit()    		
 		} else {

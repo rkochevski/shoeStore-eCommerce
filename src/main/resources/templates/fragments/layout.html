@@ -24,9 +24,11 @@
 		<!-- Header -->
         <div th:fragment="header" id="header">
             <header>
-                <div class="row header-top-bar topbar-location-phone d-none d-sm-flex">
+            <nav class="navbar navbar-expand-lg navbar-light" id="header-nav">
+            <div class="container">
+<!--                 <div class="row header-top-bar topbar-location-phone d-none d-sm-flex">
                     <div class="container">
-                        <div class="header-top-inner">
+                        <div class="header-top-inner"> -->
                             <div class="topbar-left">
                                 <ul class="list-unstyled">
                                     <li>
@@ -98,9 +100,11 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+<!--                         </div>
                     </div>
+                </div> -->
                 </div>
+                </nav>
                 <nav class="navbar navbar-expand-lg navbar-light" id="header-nav">
                     <div class="container">
                         <div class="brand-info-col" id="brand-wrapper">
@@ -118,16 +122,16 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav navbar-right ml-auto" id="nav-list">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="womens.html">WOMENS</a>
+                                    <a class="nav-link" th:href="@{/store/{category}(category='Ladies')}">LADIES</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="mens.html">MENS</a>
+                                    <a class="nav-link" th:href="@{/store/{category}(category='Mens')}">MENS</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="kids.html">KIDS</a>
+                                    <a class="nav-link" th:href="@{/store/{category}(category='Kids')}">KIDS</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="accessories.html">ACCESSORIES</a>
+                                    <a class="nav-link" th:href="@{/store/{category}(category='Accessories')}">ACCESSORIES</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link administration" sec:authorize="hasRole('ADMIN')" th:href="@{/product/product-list}">ADMINISTRATION</a>
@@ -180,7 +184,7 @@
 		<script src="/js/tagsinput.js"></script>
 		<script>feather.replace()</script>
 		<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
-		<script src="js/scripts.js"></script>
+		<script src="/js/scripts.js"></script>
 	</div>
 
 </body>

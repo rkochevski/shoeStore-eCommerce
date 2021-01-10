@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.shoestore.account.entity.Address;
+import com.example.shoestore.account.entity.User;
 import com.example.shoestore.product.entity.Order;
 import com.example.shoestore.product.entity.Payment;
 import com.example.shoestore.product.entity.Shipping;
 import com.example.shoestore.product.entity.ShoppingCart;
 import com.example.shoestore.product.service.OrderService;
 import com.example.shoestore.product.service.ShoppingCartService;
-import com.example.shoestore.user.entity.Address;
-import com.example.shoestore.user.entity.User;
 
 @Controller
 public class CheckoutControler {
@@ -31,7 +31,7 @@ public class CheckoutControler {
 	@GetMapping("/checkout")
 	public String showCheckoutPage( @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
 							Model model, Authentication authentication) {		
-		User user = (User) authentication.getPrincipal();	
+		User user = (User) authentication.getPrincipal();
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);
 		if(shoppingCart.isEmpty()) {
 			model.addAttribute("emptyCart", true);
@@ -47,8 +47,7 @@ public class CheckoutControler {
 	
 	@PostMapping("/checkout")
 	public String placeOrder(@ModelAttribute("shipping") Shipping shipping, @ModelAttribute("address") Address address,
-							@ModelAttribute("payment") Payment payment,
-							RedirectAttributes redirectAttributes, Authentication authentication) {		
+							@ModelAttribute("payment") Payment payment, RedirectAttributes redirectAttributes, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);	
 		if (!shoppingCart.isEmpty()) {

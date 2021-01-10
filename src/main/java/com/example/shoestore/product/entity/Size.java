@@ -13,6 +13,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Size implements Comparable<Size> {
 	
 	@Id
@@ -25,33 +28,12 @@ public class Size implements Comparable<Size> {
 	
 	private String value;
 
-	public Size() {
-	}
 	
 	public Size(String value, Product product) {
 		this.value = value;
 		this.product = product;
 	}
 		
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getValue() {
-		return value;
-	}
-	public void setValue(String value) {
-		this.value = value;
-	}
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
 	@Override
 	public int compareTo(Size s) {
 		return this.value.compareTo(s.getValue());		

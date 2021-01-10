@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import com.example.shoestore.user.entity.Address;
+import com.example.shoestore.account.entity.Address;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

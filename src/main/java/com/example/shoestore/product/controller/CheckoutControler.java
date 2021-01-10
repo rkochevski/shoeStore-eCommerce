@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.shoestore.account.entity.Address;
 import com.example.shoestore.account.entity.User;
-import com.example.shoestore.mailmessage.service.EmailService;
 import com.example.shoestore.product.entity.Order;
 import com.example.shoestore.product.entity.Payment;
 import com.example.shoestore.product.entity.Shipping;
@@ -28,9 +27,6 @@ public class CheckoutControler {
 	
 	@Autowired
 	OrderService orderService;
-	
-	@Autowired
-	EmailService emailService;
 
 	@GetMapping("/checkout")
 	public String showCheckoutPage( @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
@@ -58,8 +54,6 @@ public class CheckoutControler {
 			shipping.setAddress(address);
 			Order order = orderService.createOrder(shoppingCart, shipping, payment, user);		
 			redirectAttributes.addFlashAttribute("order", order);
-			
-			emailService.sendOrderConfirmationMail(user, order);
 		}
 		return "redirect:/order-submitted";
 	}

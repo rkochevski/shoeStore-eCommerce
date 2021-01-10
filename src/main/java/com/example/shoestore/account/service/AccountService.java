@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.shoestore.account.entity.User;
+import com.example.shoestore.mailmessage.service.EmailService;
 
 @Service
 public class AccountService {
@@ -21,6 +22,9 @@ public class AccountService {
 	
 	@Autowired
 	UserSecurityService userSecurityService;
+	
+	@Autowired
+	EmailService emailService;
 	
 	public String createAccount(@Valid User user, String password, BindingResult bindingResults, RedirectAttributes redirectAttributes, Model model) {
 		model.addAttribute("email", user.getEmail());
@@ -34,7 +38,8 @@ public class AccountService {
 		if (invalidFields) {
 			return "redirect:/register";
 		}		
-		user = userService.createUser(user.getUsername(), password,  user.getEmail(), Arrays.asList("ROLE_USER"));	
+		user = userService.createUser(user.getUsername(), password,  user.getEmail(), Arrays.asList("ROLE_USER"));
+		emailService.sendAccountCreatedMail(user);
 		userSecurityService.authenticateUser(user.getUsername());
 		return "redirect:/profile";  
 	}

@@ -134,7 +134,7 @@
 
 							<!-- Shop Grid -->
 							<div class="grid grid-gap-3 grid-col-2 grid-col-lg-3 mb-3">
-								<div class="card card-product" th:each="product : ${products}" th:if="${product.enabled == true}">
+								<div class="card card-product" th:each="product : ${products}">
 									<div class="card-body">
 										<a th:href="@{/product-detail?id=}+${product.id}">
 											<img class="card-img-top" th:src="${product.picture} ? ${product.picture} : '/image/product/itemexample.jpg'" alt="Card image cap">

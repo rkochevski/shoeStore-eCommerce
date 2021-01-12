@@ -83,17 +83,20 @@
 								</form>
 								<hr>
 								<div class="pt-1 mb-2">
-									<span class="text-medium">Brand:&nbsp;</span>
-									<span class="text-medium" th:text="${product.brand.name}"></span>
+									<form id="brand-filter-form" th:action="@{/store}" method="GET">
+										<input type="checkbox" class="custom-control-input" th:id="${product.brand}" th:name="brand" th:value="${product.brand.name}"
+												th:checked="checked">
+										<span class="text-medium">Brand:&nbsp;</span>
+										<a th:text="${product.brand.name}" href="javascript:void()" onclick="document.getElementById('brand-filter-form').submit();"></a>
+									</form>
 								</div>
 								<div class="padding-bottom-1x mb-2">
-									<span class="text-medium">Categories:&nbsp;</span>
-									<div class="padding-bottom-1x mb-2">
+									<form id="category-filter-form" th:action="@{/store}" method="GET">
+										<input type="checkbox" class="custom-control-input" th:id="${product.category}" th:name="category" th:value="${product.category.name}"
+												th:checked="checked">
 										<span class="text-medium">Categories:&nbsp;</span>
-										<a class="navi-link" th:href="@{/store/{category}(category=${product.category.name})}">
-											<span class="text-medium" th:text="${product.category.name}"></span>
-										</a>
-									</div>
+										<a th:text="${product.category.name}" href="javascript:void()" onclick="document.getElementById('category-filter-form').submit();"></a>
+									</form>
 								</div>
 							</div>
 						</div>

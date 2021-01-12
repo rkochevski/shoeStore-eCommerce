@@ -88,9 +88,12 @@
 								</div>
 								<div class="padding-bottom-1x mb-2">
 									<span class="text-medium">Categories:&nbsp;</span>
-									<a class="navi-link" th:href="@{/store/{category}(category=${product.category.name})}">
-										<span class="text-medium" th:text="${product.category.name}"></span>
-									</a>
+									<div class="padding-bottom-1x mb-2">
+										<span class="text-medium">Categories:&nbsp;</span>
+										<a class="navi-link" th:href="@{/store/{category}(category=${product.category.name})}">
+											<span class="text-medium" th:text="${product.category.name}"></span>
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>

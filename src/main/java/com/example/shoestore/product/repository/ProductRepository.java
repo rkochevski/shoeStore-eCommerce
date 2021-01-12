@@ -3,7 +3,6 @@ package com.example.shoestore.product.repository;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 	@Query("SELECT p FROM Product p WHERE p.enabled = true")
 	List<Product> findAll();
 		
-	@EntityGraph(attributePaths = { "sizes", "category", "brand" })
 	Optional<Product> findById(Long id);
 	
 	@Query("SELECT DISTINCT s.value FROM Size s")

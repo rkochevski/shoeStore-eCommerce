@@ -105,16 +105,32 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav navbar-right ml-auto" id="nav-list">
                                 <li class="nav-item">
-                                 	<a class="nav-link" th:href="@{/store/{category}(category='Ladies')}">LADIES</a>
+                                	<form id="category-filter-ladies" th:action="@{/store}" method="GET">
+										<input type="checkbox" class="custom-control-input" th:name="category" th:value="${'Ladies'}"
+												th:checked="checked">
+										<a class="nav-link category-filter-link" href="javascript:void()" onclick="document.getElementById('category-filter-ladies').submit();">LADIES</a>
+									</form>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/store/{category}(category='Mens')}">MENS</a>
+                                    <form id="category-filter-mens" th:action="@{/store}" method="GET">
+										<input type="checkbox" class="custom-control-input" th:name="category" th:value="${'Mens'}"
+												th:checked="checked">
+										<a class="nav-link category-filter-link" href="javascript:void()" onclick="document.getElementById('category-filter-mens').submit();">MENS</a>
+									</form>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/store/{category}(category='Kids')}">KIDS</a>
+                                    <form id="category-filter-kids" th:action="@{/store}" method="GET">
+										<input type="checkbox" class="custom-control-input" th:name="category" th:value="${'Kids'}"
+												th:checked="checked">
+										<a class="nav-link category-filter-link" href="javascript:void()" onclick="document.getElementById('category-filter-kids').submit();">KIDS</a>
+									</form>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/store/{category}(category='Accessories')}">ACCESSORIES</a>
+                                    <form id="category-filter-accessories" th:action="@{/store}" method="GET">
+										<input type="checkbox" class="custom-control-input" th:name="category" th:value="${'Accessories'}"
+												th:checked="checked">
+										<a class="nav-link category-filter-link" href="javascript:void()" onclick="document.getElementById('category-filter-accessories').submit();">ACCESSORIES</a>
+									</form>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link administration" sec:authorize="hasRole('ADMIN')" th:href="@{/product/product-list}">ADMINISTRATION</a>
@@ -131,16 +147,16 @@
             <footer class="card-footer">
                 <div class="container">
                     <div class="useful-links">
-                        <a class="link-item" href="https://www.instagram.com/distriktbarkitchen/" target="_blank">
+                        <a class="link-item" href="https://www.facebook.com/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="facebook-svg" style="enable-background:new 0 0 112.196 112.196;" version="1.1" viewBox="0 0 112.196 112.196" xml:space="preserve"><g><circle cx="56.098" cy="56.098" r="56.098" style="fill:#3B5998;"/><path d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34   c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z" style="fill:#FFFFFF;"/></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
                         </a>
-                        <a class="link-item" href="https://www.instagram.com/distriktbarkitchen/" target="_blank">
+                        <a class="link-item" href="https://www.twitter.com/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="twitter-svg" style="enable-background:new 0 0 112.197 112.197;" version="1.1" viewBox="0 0 112.197 112.197" xml:space="preserve"><g><circle cx="56.099" cy="56.098" r="56.098" style="fill:#55ACEE;"/><g><path d="M90.461,40.316c-2.404,1.066-4.99,1.787-7.702,2.109c2.769-1.659,4.894-4.284,5.897-7.417    c-2.591,1.537-5.462,2.652-8.515,3.253c-2.446-2.605-5.931-4.233-9.79-4.233c-7.404,0-13.409,6.005-13.409,13.409    c0,1.051,0.119,2.074,0.349,3.056c-11.144-0.559-21.025-5.897-27.639-14.012c-1.154,1.98-1.816,4.285-1.816,6.742    c0,4.651,2.369,8.757,5.965,11.161c-2.197-0.069-4.266-0.672-6.073-1.679c-0.001,0.057-0.001,0.114-0.001,0.17    c0,6.497,4.624,11.916,10.757,13.147c-1.124,0.308-2.311,0.471-3.532,0.471c-0.866,0-1.705-0.083-2.523-0.239    c1.706,5.326,6.657,9.203,12.526,9.312c-4.59,3.597-10.371,5.74-16.655,5.74c-1.08,0-2.15-0.063-3.197-0.188    c5.931,3.806,12.981,6.025,20.553,6.025c24.664,0,38.152-20.432,38.152-38.153c0-0.581-0.013-1.16-0.039-1.734    C86.391,45.366,88.664,43.005,90.461,40.316L90.461,40.316z" style="fill:#F1F2F2;"/></g></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
                         </a>
-                        <a class="link-item" href="https://www.instagram.com/distriktbarkitchen/" target="_blank">
+                        <a class="link-item" href="https://www.pinterest.com/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="pinterest-svg" version="1.1" x="0px" y="0px" viewBox="0 0 32 32" xml:space="preserve"><g id="Flat_copy_5"><path fill="#E02F2F" d="M15.995 0c-8.837 0-16 7.163-16 16 0 8.836 7.163 16 16 16s16-7.164 16-16c0-8.837-7.164-16-16-16z"/><path fill="#FFF" d="M24.002 12.466c0 4.658-2.59 8.139-6.407 8.139-1.283 0-2.488-.693-2.901-1.481 0 0-.69 2.736-.835 3.264-.514 1.866-2.027 3.733-2.144 3.886-.082.106-.263.073-.282-.068-.033-.238-.418-2.592.036-4.513l1.527-6.471s-.379-.758-.379-1.879c0-1.76 1.02-3.074 2.29-3.074 1.08 0 1.601.81 1.601 1.782 0 1.086-.691 2.71-1.048 4.214-.298 1.26.632 2.288 1.874 2.288 2.25 0 3.765-2.89 3.765-6.314 0-2.602-1.752-4.551-4.941-4.551-3.601 0-5.846 2.686-5.846 5.687 0 1.035.306 1.765.784 2.329.219.26.25.364.17.662-.058.219-.187.744-.243.953-.079.301-.323.408-.594.297-1.659-.677-2.432-2.495-2.432-4.537 0-3.373 2.845-7.418 8.487-7.418 4.535.002 7.518 3.282 7.518 6.805z"/></g></svg>
                         </a>
-                        <a class="link-item" href="https://www.instagram.com/ristoneeisto/?hl=en" target="_blank">
+                        <a class="link-item" href="https://www.instagram.com/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" id="instagram-svg" data-name="Layer 1" viewBox="0 0 128 128"><defs><style>.cls-1,.cls-13{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:url(#radial-gradient);}.cls-4{clip-path:url(#clip-path-2);}.cls-5{fill:url(#radial-gradient-2);}.cls-6{clip-path:url(#clip-path-3);}.cls-7{fill:url(#radial-gradient-3);}.cls-8{clip-path:url(#clip-path-4);}.cls-9{clip-path:url(#clip-path-5);}.cls-10{clip-path:url(#clip-path-6);}.cls-11{fill:url(#radial-gradient-6);}.cls-12{fill:#fff;}.cls-13{stroke:#fff;stroke-miterlimit:10;stroke-width:8px;}</style><clipPath id="clip-path"><circle class="cls-1" cx="64" cy="64" r="64" style="fill: none;"/></clipPath><radialGradient id="radial-gradient" cx="27.5" cy="121.5" r="137.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd676"/><stop offset="0.25" stop-color="#f2a454"/><stop offset="0.38" stop-color="#f05c3c"/><stop offset="0.7" stop-color="#c22f86"/><stop offset="0.96" stop-color="#6666ad"/><stop offset="0.99" stop-color="#5c6cb2"/></radialGradient><clipPath id="clip-path-2"><path class="cls-1" d="M104-163H24A24.07,24.07,0,0,0,0-139v80A24.07,24.07,0,0,0,24-35h80a24.07,24.07,0,0,0,24-24v-80A24.07,24.07,0,0,0,104-163ZM120-59a16,16,0,0,1-16,16H24A16,16,0,0,1,8-59v-80a16,16,0,0,1,16-16h80a16,16,0,0,1,16,16Z" style="fill: none;"/></clipPath><radialGradient id="radial-gradient-2" cx="27.5" cy="-41.5" r="148.5" xlink:href="#radial-gradient"/><clipPath id="clip-path-3"><circle class="cls-1" cx="82" cy="209" r="5" style="fill: none;"/></clipPath><radialGradient id="radial-gradient-3" cx="13.87" cy="303.38" r="185.63" xlink:href="#radial-gradient"/><clipPath id="clip-path-4"><path class="cls-1" d="M64-115A16,16,0,0,0,48-99,16,16,0,0,0,64-83,16,16,0,0,0,80-99,16,16,0,0,0,64-115Zm0,24a8,8,0,0,1-8-8,8,8,0,0,1,8-8,8,8,0,0,1,8,8A8,8,0,0,1,64-91Z" style="fill: none;"/></clipPath><clipPath id="clip-path-5"><path class="cls-1" d="M84-63H44A16,16,0,0,1,28-79v-40a16,16,0,0,1,16-16H84a16,16,0,0,1,16,16v40A16,16,0,0,1,84-63ZM44-127a8,8,0,0,0-8,8v40a8,8,0,0,0,8,8H84a8,8,0,0,0,8-8v-40a8,8,0,0,0-8-8Z" style="fill: none;"/></clipPath><clipPath id="clip-path-6"><circle class="cls-1" cx="82" cy="-117" r="5" style="fill: none;"/></clipPath><radialGradient id="radial-gradient-6" cx="13.87" cy="-22.62" r="185.63" xlink:href="#radial-gradient"/></defs><title>Artboard 26</title><g class="cls-2" style="clip-path: url(#clip-path);"><circle class="cls-3" cx="27.5" cy="121.5" r="137.5" style="fill: url(#radial-gradient);"/></g><g class="cls-4" style="clip-path: url(#clip-path-2);"><circle class="cls-5" cx="27.5" cy="-41.5" r="148.5" style="fill: url(#radial-gradient-2);"/></g><g class="cls-6" style="clip-path: url(#clip-path-3);"><circle class="cls-7" cx="13.87" cy="303.38" r="185.63" style="fill: url(#radial-gradient-3);"/></g><g class="cls-8" style="clip-path: url(#clip-path-4);"><circle class="cls-5" cx="27.5" cy="-41.5" r="148.5" style="fill: url(#radial-gradient-2);"/></g><g class="cls-9" style="clip-path: url(#clip-path-5);"><circle class="cls-5" cx="27.5" cy="-41.5" r="148.5" style="fill: url(#radial-gradient-2);"/></g><g class="cls-10" style="clip-path: url(#clip-path-6);"><circle class="cls-11" cx="13.87" cy="-22.62" r="185.63" style="fill: url(#radial-gradient-6);"/></g><circle class="cls-12" cx="82" cy="46" r="5" style="fill: #fff;"/><path class="cls-12" d="M64,48A16,16,0,1,0,80,64,16,16,0,0,0,64,48Zm0,24a8,8,0,1,1,8-8A8,8,0,0,1,64,72Z" style="fill: #fff;"/><rect class="cls-13" x="32" y="32" width="64" height="64" rx="12" ry="12" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 8px;"/></svg>
                         </a>
                         <a class="link-item" href="https://github.com/rkochevski" target="_blank">
